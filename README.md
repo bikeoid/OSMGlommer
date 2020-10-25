@@ -1,6 +1,9 @@
 The purpose of OSM Glommer is to concatenate all segments of a street into a single way having identical tags.    This is most often useful when importing TIGER or municipal data.
 
-NOTE: Although it recognizes relations, relations are not updated when ways are combined - the result could be dangling relation references.  Caution is required before applying to existing OSM data.
+NOTES: 
+
+  * Although it recognizes relations, relations are not updated when ways are combined - the result could be dangling relation references.  Caution is required before applying to existing OSM data.
+  * There is no filtering - all ways with identical tags will be glommed, not just highways.
 
 Input: OSM format XML file
 Output: OSM format XML file
