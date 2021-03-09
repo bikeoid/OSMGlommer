@@ -113,6 +113,26 @@ namespace OsmGlommer
                 ChangeIntersectingWay(newIntersectNode, extendingWay, way);
             }
 
+            DropDuplicateNodes(way);
+        }
+
+        /// <summary>
+        /// Remove duplicate node from extending way
+        /// </summary>
+        /// <param name="way"></param>
+        private void DropDuplicateNodes(OSMWay way)
+        {
+            var lastNode = way.NodeList[0];
+            for (int i= 1; i < way.NodeList.Count; i++)
+            {
+                var node = way.NodeList[i];
+                if (node.ID == lastNode.ID)
+                {
+                    way.NodeList.RemoveAt(i); // Found a duplicate (normally only 1)
+                    break;
+                }
+                lastNode = node;
+            }
         }
 
         /// <summary>
